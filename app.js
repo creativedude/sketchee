@@ -115,6 +115,6 @@ function hideClearLb() {
 download_img = function(el) {
 	console.log('save')
   // get image URI from canvas object
-  var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/jpg");
+  var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/png");
   el.href = imageURI;
 };
