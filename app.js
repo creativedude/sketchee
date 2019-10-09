@@ -1,8 +1,15 @@
 // app
 var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+let r = 0;
+let g = 0;
+let b = 0;
+let a = 1;// document.getElementById("opacity").value / 100;
+let strokewidth = 10;
+let active = true;
+console.log('asd',r)
 function setup() {
-	createCanvas(w, h);
+	createCanvas(w, (h-60));
 }
 let size = 0;
 function circles() {
@@ -33,31 +40,35 @@ let prevposy = null;
 //   prevposx = e.pageX;
 //   prevposy = e.pageY;
 // }
-
-let r = 124;
-let g = 124;
-let b = 124;
-let a = 0.5;
-let strokewidth = 10;
+function changeStroke(value) {
+	console.log('strokechangef', value);
+	strokewidth = value;
+	document.getElementById("example").style.width = value + "px";
+	document.getElementById("example").style.height = value + "px";
+}
+function changeRed(value) {
+	console.log('redchangef', value);
+	r = value;
+	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
+}
+function changeGreen(value) {
+	console.log('redchangef', value);
+	g = value;
+	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
+}
+function changeBlue(value) {
+	console.log('redchangef', value);
+	b = value;
+	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
+}
+function changeOpacity(value) {
+	console.log('redchangef', value);
+	a = value / 100;
+	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
+}
 function lines() {
 
-	r = r + Math.round((Math.random() * 10) - 5);
-	g = g + Math.round((Math.random() * 10) - 5);
-	b = b + Math.round((Math.random() * 10) - 5);
-	//a = a + Math.round((Math.random() * 0.1) - 0.05);
-	if (r < 0) {
-		r=0;
-	}
-	if (g < 0) {
-		g=0;
-	}
-	if (b < 0) {
-		b=0;
-	}
-	if (a < 0) {
-		a=0;
-	}
-	if (mouseIsPressed) {
+	if (mouseIsPressed && active) {
 
 		console.log(r, g, b, a);
 		if (!prevposx) {
@@ -67,7 +78,7 @@ function lines() {
 			prevposy = mouseY;
 		}
 		stroke('rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')');
-		strokeWeight(40);
+		strokeWeight(strokewidth);
 		line(prevposx, prevposy, mouseX, mouseY);
 
 		prevposx = mouseX;
@@ -75,16 +86,22 @@ function lines() {
 	} else {
 		prevposx = null;
 		prevposy = null;
-
-		r = (Math.random() * 100);
-		g = (Math.random() * 100);
-		b = (Math.random() * 100);
 		//a = (Math.random() * 0.1);
 	}
 	
 }
 
 function draw() {
-	circles();
-	// lines();
+	// circles();
+	lines();
+}
+function openSettings() {
+	console.log('openbtns');
+	document.getElementById("body").className = "settingsmode";
+	active = false;
+}
+function closeSettings() {
+	console.log('openbtns');
+	document.getElementById("body").className = "";
+	active = true;
 }
