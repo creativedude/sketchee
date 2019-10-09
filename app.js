@@ -105,3 +105,16 @@ function closeSettings() {
 	document.getElementById("body").className = "";
 	active = true;
 }
+function clearCanvas() {
+	console.log('clearing');
+	clear();
+	hideClearLb();
+}
+function showClearLb() {
+	document.getElementById('clearlb').className= "lightbox show";
+	active = false;
+}
+function hideClearLb() {
+	document.getElementById('clearlb').className= "lightbox";
+	active = true;
+}
