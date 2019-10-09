@@ -9,6 +9,7 @@ let strokewidth = 10;
 let active = true;
 function setup() {
 	createCanvas(w, (h-60));
+	background(color(255, 255, 255));
 }
 let size = 0;
 function circles() {
@@ -115,6 +116,6 @@ function hideClearLb() {
 download_img = function(el) {
 	console.log('save')
   // get image URI from canvas object
-  var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/png");
+  var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/jpg");
   el.href = imageURI;
 };
