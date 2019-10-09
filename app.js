@@ -7,7 +7,6 @@ let b = 0;
 let a = 1;// document.getElementById("opacity").value / 100;
 let strokewidth = 10;
 let active = true;
-console.log('asd',r)
 function setup() {
 	createCanvas(w, (h-60));
 }
@@ -41,18 +40,15 @@ let prevposy = null;
 //   prevposy = e.pageY;
 // }
 function changeStroke(value) {
-	console.log('strokechangef', value);
 	strokewidth = value;
 	document.getElementById("example").style.width = value + "px";
 	document.getElementById("example").style.height = value + "px";
 }
 function changeRed(value) {
-	console.log('redchangef', value);
 	r = value;
 	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
 }
 function changeGreen(value) {
-	console.log('redchangef', value);
 	g = value;
 	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
 }
@@ -62,14 +58,11 @@ function changeBlue(value) {
 	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
 }
 function changeOpacity(value) {
-	console.log('redchangef', value);
 	a = value / 100;
 	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
 }
 function lines() {
 	if (mouseIsPressed && active && mouseY < (h - 60)) {
-
-		console.log(r, g, b, a);
 		if (!prevposx) {
 			prevposx = mouseX;
 		}
