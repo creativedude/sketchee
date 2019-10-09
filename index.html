@@ -45,7 +45,7 @@
 				-ms-transition: all 250ms ease-in-out;
 				-o-transition: all 250ms ease-in-out;
 				transition: all 250ms ease-in-out;
-    			z-index:2;
+    			z-index:4;
     		}
     		#example {
     			display:block;
@@ -60,7 +60,7 @@
     			position:fixed;
     			background-color:rgba(0,0,0,0.7);
     			bottom:0;
-    			z-index:3;
+    			z-index:5;
     			height:0px;
 				-webkit-transition: all 250ms ease-in-out;
 				-moz-transition: all 250ms ease-in-out;
@@ -78,8 +78,12 @@
     		.menubar {
     			height:60px;
     			width:100vw;
-    			position:absolute;
+    			position:fixed;
     			bottom:0;
+    			z-index:3;
+    			background-color:#fff;
+    			-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+				box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     		}
     		.menubar button {
 
@@ -91,6 +95,7 @@
     			width:150px;
     			float:right;
     			margin-right:30px;
+
     		}
     		.settingsmode .drawingboard {
     			pointer-events:none;
