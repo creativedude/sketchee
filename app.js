@@ -102,6 +102,8 @@ function closeSettings() {
 function clearCanvas() {
 	console.log('clearing');
 	clear();
+	
+	background(color(255, 255, 255));
 	hideClearLb();
 }
 function showClearLb() {
