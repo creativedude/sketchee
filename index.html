@@ -86,7 +86,7 @@
 				box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     		}
 
-    		button {
+    		button, .button {
 
     			display: block;
     			border:0px solid transparent;
@@ -95,13 +95,16 @@
     			text-align:center;
     			width:150px;
 
+    			color:#000;
+    			text-decoration:none;
     		}
-    		.menubar button {
+    		.menubar button, .menubar .button {
 
     			float:right;
     			margin-right:30px;
     			margin-top:15px;
     			width:auto;
+    			font-size:12px;
     		}
     		.settingsmode .drawingboard {
     			pointer-events:none;
@@ -196,6 +199,7 @@
 		<div class="menubar">
 			<button id="settings" onclick="openSettings()">Settings</button>
 			<button class="button" onclick="showClearLb()">Clear</button>
+			<a class="button" id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download</a>
 		</div>
 		<div class="settings">
 			<div class="settingspad">

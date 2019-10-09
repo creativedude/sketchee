@@ -111,3 +111,10 @@ function hideClearLb() {
 	document.getElementById('clearlb').className= "lightbox";
 	active = true;
 }
+
+download_img = function(el) {
+	console.log('save')
+  // get image URI from canvas object
+  var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/jpg");
+  el.href = imageURI;
+};
