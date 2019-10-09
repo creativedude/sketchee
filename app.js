@@ -90,6 +90,31 @@ function lines() {
 	}
 	
 }
+function touchMoved() {
+  // prevent default
+
+  if (active) {
+
+		console.log(r, g, b, a);
+		if (!prevposx) {
+			prevposx = mouseX;
+		}
+		if (!prevposy) {
+			prevposy = mouseY;
+		}
+		stroke('rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')');
+		strokeWeight(strokewidth);
+		line(prevposx, prevposy, mouseX, mouseY);
+
+		prevposx = mouseX;
+		prevposy = mouseY;
+	} else {
+		prevposx = null;
+		prevposy = null;
+		//a = (Math.random() * 0.1);
+	}
+  	return false;
+}
 
 function draw() {
 	// circles();
