@@ -175,7 +175,7 @@
 			    -ms-flex-align: center;
 			    align-items: center;
     		}
-    		.lightbox button {
+    		.lightbox button, .lightbox .button {
     			margin-bottom:20px;
     		}
     		.lightbox h3 {
@@ -196,6 +196,62 @@
     		}
     		input[type="file"] {
 			    display: none;
+			}
+			#imagelb .button {
+				padding-left: 0;
+    			padding-right: 0;
+				max-width:250px;
+				width:100%;
+			}
+			.radioBlock {
+				max-width:300px;
+				width:100%;
+				display:block;
+				margin-bottom:30px;
+				display: -ms-flexbox;
+			    display: -webkit-flex;
+			    display: flex;
+			    -webkit-flex-direction: row;
+			    -ms-flex-direction: row;
+			    flex-direction: row;
+			    -webkit-flex-wrap: nowrap;
+			    -ms-flex-wrap: nowrap;
+			    flex-wrap: nowrap;
+			    -webkit-justify-content: center;
+			    -ms-flex-pack: center;
+			    justify-content: center;
+			    -webkit-align-content: stretch;
+			    -ms-flex-line-pack: stretch;
+			    align-content: stretch;
+			    -webkit-align-items: center;
+			    -ms-flex-align: center;
+			    align-items: center;
+			    //
+			}
+			.radioBlock label {
+				text-align:center;
+				line-height:30px;
+				padding: 0;
+				display:block;
+				-webkit-order: 0;
+			    -ms-flex-order: 0;
+			    order: 0;
+			    -webkit-flex: 1 1 auto;
+			    -ms-flex: 1 1 auto;
+			    flex: 1 1 auto;
+			    -webkit-align-self: auto;
+			    -ms-flex-item-align: auto;
+			    align-self: auto;
+			    background-color:transparent;
+			    border:1px solid #bada55;
+			}
+			.radioBlock input[type="radio"]:checked+label {
+				background-color:#bada55;
+				color:#333;
+			}
+			.radioBlock input {
+				position:absolute;
+				left:-1000000px;
 			}
     	</style>
 	</head>
@@ -247,7 +303,9 @@
 			<button class="button" onclick="hideClearLb()">Cancel</button>
 		</div>
 		<div class="lightbox" id="imagelb">
-		<div class="imageupload">
+
+			<h3>Image background</h3>
+			<p>Please pick a layout option then select an image</p>
 			<div class="radioBlock">
 				<input type="radio" name="layout" value="true" id="layout1" checked/>
 				<label for="layout1">Fill</label>
@@ -255,10 +313,8 @@
 				<label for="layout2">Center</label>
 			</div>
 			<label class="button"><input type="file" id="imageInput" name="files" />Select image</label>
-			<img id="testimg" />
 
 			<button class="button" onclick="hideimagelb()">Close</button>
-		</div>
 		</div>
 	</body>
 </html>
