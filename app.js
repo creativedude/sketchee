@@ -1,6 +1,6 @@
 // app
 var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+var h = Math.max((document.documentElement.clientHeight, window.innerHeight) -60 || 0);
 let r = 0;
 let g = 0;
 let b = 0;
@@ -8,7 +8,7 @@ let a = 1;// document.getElementById("opacity").value / 100;
 let strokewidth = 10;
 let active = true;
 function setup() {
-	createCanvas(w, (h-60));
+	createCanvas(w, (h));
 	background(color(255, 255, 255));
 }
 let size = 0;
@@ -63,7 +63,7 @@ function changeOpacity(value) {
 	document.getElementById("example").style.backgroundColor = 'rgba(' +r+ '%,' +g+ '%,' +b+ '%, ' +a+ ')';
 }
 function lines() {
-	if (mouseIsPressed && active && mouseY < (h - 60)) {
+	if (mouseIsPressed && active && mouseY < (h)) {
 		if (!prevposx) {
 			prevposx = mouseX;
 		}
