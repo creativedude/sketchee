@@ -85,9 +85,23 @@ function lines() {
 }
 
 
+let img;
 function draw() {
 	// circles();
 	lines();
+
+  if (img) {
+  	//console.log('img is defined', img);
+  	//console.log('imgwidth', img.width);
+  	//console.log('imgheight', img.height);
+    
+	// img.onload = () => {
+	    
+	//     console.log('imgloaded')
+	// };
+  } else {
+  	//console.log('image not defined')
+  }
 }
 function openSettings() {
 	console.log('openbtns');
@@ -114,9 +128,170 @@ function hideClearLb() {
 	active = true;
 }
 
+
+function showimagelb() {
+	document.getElementById('imagelb').className= "lightbox show";
+	active = false;
+}
+function hideimagelb() {
+	document.getElementById('imagelb').className= "lightbox";
+	active = true;
+}
+
 download_img = function(el) {
 	console.log('save')
   // get image URI from canvas object
   var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/jpg");
   el.href = imageURI;
 };
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  //the event occurred
+  console.log('ready');
+	console.log('fileinput', document.getElementById('imageInput'));
+	if (window.File && window.FileReader && window.FileList && window.Blob) {
+	  document.getElementById('imageInput').addEventListener('change', handleFileSelect, false);
+	} else {
+	  alert('The File APIs are not fully supported in this browser.');
+	}
+})
+
+
+function handleFileSelect(evt) {
+	console.log('handling file select');
+  var f = evt.target.files[0]; // FileList object
+	console.log('f',f);
+	console.log('evt.target',evt.target.value);
+	var base64String = getBase64(evt.target.files[0]);
+
+	console.log('base64String',base64String);
+}
+
+function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+	reader.onload = function () {
+	    // console.log('reader.result',reader.result);
+	    // document.getElementById('testimg').src = reader.result;
+	    /*var loadedimage = new Image();
+		loadedimage.src = reader.result;
+		console.log('image',loadedimage);
+		loadedimage.onload = () => {
+		 	//img = image;
+		 	console.log('lets go');
+		 	image(loadedimage, 0, 0, 500, 500);
+		};*/
+
+		loadImage(reader.result, img => {
+			// console.log(img);
+			var newHeight;
+			var newWidth;
+			var heightDiff = (w / img.width);
+			var widthDiff = (h / img.height);
+			console.log('heightDiff',heightDiff);
+			console.log('widthDiff',widthDiff);
+			var xpos = 0;
+			var ypos = 0;
+			if (document.getElementById('layout1').checked) {
+				// fill
+				if (heightDiff < 1 && widthDiff < 1) {
+					console.log("bigger on all sides");
+					if (heightDiff < widthDiff) {
+						console.log("heightDiff < widthDiff")
+						newHeight = h;
+						newWidth = (h / img.height) * img.width;
+
+					} else {
+						console.log("heightDiff > widthDiff")
+						newHeight = (w / img.width) * img.height;
+						newWidth = w;
+
+					}
+				} 
+				if (heightDiff > 1 && widthDiff < 1) {
+					console.log("width bigger, height smaller")
+					newHeight = (w / img.width) * img.height;
+					newWidth = w;
+				} 
+				if (heightDiff < 1 && widthDiff > 1) {
+					// bigger on height
+					console.log("height bigger, width smaller")
+					newHeight = h;
+					newWidth = (h / img.height) * img.width;
+				} 
+
+				if (heightDiff > 1 && widthDiff > 1) {
+					console.log("smaller on all sides")
+					if (heightDiff < widthDiff) {
+						newHeight = h;
+						newWidth = (h / img.height) * img.width;
+					} else {
+						newHeight = (w / img.width) * img.height;
+						newWidth = w;
+					}
+				} 
+
+				console.log('relative width', (w / img.width));
+				console.log('screenwidth', w);
+				console.log('img.width', img.width);
+				console.log('screenheight', h);
+				console.log('img.height', img.height);
+				console.log('newHeight', newHeight);
+			} else {
+				// center
+				console.log('center');
+				if (heightDiff < 1 && widthDiff < 1) {
+					console.log("bigger on all sides");
+					if (heightDiff < widthDiff) {
+						console.log("heightDiff < widthDiff")
+						newHeight =  (w / img.width) * img.height;
+						newWidth = w;
+
+					} else {
+						console.log("heightDiff > widthDiff")
+						newHeight = h;
+						newWidth =  (h / img.height) * img.width;
+
+					}
+				}
+
+				if (heightDiff > 1 && widthDiff < 1) {
+					console.log("width bigger, height smaller")
+					newHeight = h;
+					newWidth =  (h / img.height) * img.width;
+				} 
+				if (heightDiff < 1 && widthDiff > 1) {
+					// bigger on height
+					console.log("height bigger, width smaller")
+					newHeight =  (w / img.width) * img.height;
+					newWidth = w;
+				} 
+
+				if (heightDiff > 1 && widthDiff > 1) {
+					console.log("smaller on all sides")
+					if (heightDiff < widthDiff) {
+						console.log('heightDiff < widthDiff');
+						newHeight =  (w / img.width) * img.height;
+						newWidth = w;
+					} else {
+						console.log('heightDiff > widthDiff')
+						newHeight = h;
+						newWidth = (h / img.height) * img.width;
+					}
+				} 
+			}
+
+			xpos = (w - newWidth) / 2;
+			ypos = (h  - newHeight) / 2;
+
+			image(img, xpos, ypos, newWidth, newHeight);
+		 });
+	    return reader.result
+	};
+    reader.onerror = function (error) {
+    	alert('You broke it: ', error);
+    };
+}
+
+

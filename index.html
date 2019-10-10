@@ -97,14 +97,14 @@
 
     			color:#000;
     			text-decoration:none;
+    			font-size:12px;
     		}
     		.menubar button, .menubar .button {
 
     			float:right;
-    			margin-right:30px;
+    			margin-right:10px;
     			margin-top:15px;
     			width:auto;
-    			font-size:12px;
     		}
     		.settingsmode .drawingboard {
     			pointer-events:none;
@@ -189,6 +189,14 @@
 			    display: -webkit-flex;
 			    display: flex;
     		}
+    		.imageupload {
+    			z-index:999;
+    			position:fixed;
+    			top:0;
+    		}
+    		input[type="file"] {
+			    display: none;
+			}
     	</style>
 	</head>
 	<body id="body">
@@ -199,7 +207,8 @@
 		<div class="menubar">
 			<button id="settings" onclick="openSettings()">Settings</button>
 			<button class="button" onclick="showClearLb()">Clear</button>
-			<a class="button" id="download" download="sketch.jpg" href="" onclick="download_img(this);">Download</a>
+			<a class="button" id="download" download="sketch.jpg" onclick="download_img(this);">Download</a>
+			<a class="button" id="upload" download="sketch.jpg" onclick="showimagelb();">Select image</a>
 		</div>
 		<div class="settings">
 			<div class="settingspad">
@@ -236,6 +245,20 @@
 
 
 			<button class="button" onclick="hideClearLb()">Cancel</button>
+		</div>
+		<div class="lightbox" id="imagelb">
+		<div class="imageupload">
+			<div class="radioBlock">
+				<input type="radio" name="layout" value="true" id="layout1" checked/>
+				<label for="layout1">Fill</label>
+				<input type="radio" name="layout" value="false" id="layout2"/>
+				<label for="layout2">Center</label>
+			</div>
+			<label class="button"><input type="file" id="imageInput" name="files" />Select image</label>
+			<img id="testimg" />
+
+			<button class="button" onclick="hideimagelb()">Close</button>
+		</div>
 		</div>
 	</body>
 </html>
