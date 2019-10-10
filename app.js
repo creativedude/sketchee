@@ -286,6 +286,9 @@ function getBase64(file) {
 			ypos = (h  - newHeight) / 2;
 
 			image(img, xpos, ypos, newWidth, newHeight);
+			
+			document.getElementById('imagelb').className= "lightbox";
+			active = true;
 		 });
 	    return reader.result
 	};
