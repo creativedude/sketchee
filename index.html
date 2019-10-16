@@ -284,6 +284,13 @@
 				let a = 1;// document.getElementById("opacity").value / 100;
 				let strokewidth = 10;
 				let active = true;
+
+				function windowResized() {
+				  	resizeCanvas(windowWidth, windowHeight);
+				}
+
+
+
 				function setup() {
 					createCanvas(w, (h));
 					background(color(255, 255, 255));
