@@ -314,9 +314,10 @@
 			.logo path {
 				fill:#777;
 			}
-			#infolb p {
+			#infolb p, #rotatelb p {
 				padding: 0 20px;
 				line-height:1.2;
+				text-align:center;
 			}
 			.lightbox a {
 				color:#bada55;
@@ -338,9 +339,18 @@
 				let active = true;
 
 				function windowResized() {
+					document.getElementById('rotatelb').className= "lightbox show";
+					active = false;
+				}
+				function redrawCanvas() {
+					document.getElementById('rotatelb').className= "lightbox";
+					active = true;
 				  	resizeCanvas(windowWidth, windowHeight);
 				}
-
+				function hiderotatelb() {
+					document.getElementById('rotatelb').className= "lightbox";
+					active = true;
+				}
 
 
 				function setup() {
@@ -834,6 +844,11 @@
 			<p>If you like this, consider buying me a beer or tell your friends about it!</p>
 			<p>Built by <a href="https://github.com/creativedude" target="_blank">CreativeDude</a></p>
 			<button class="button" onclick="hideinfolb()">Close</button>
+		</div>
+		<div class="lightbox" id="rotatelb">
+			<p><strong>Warning</strong></br>Rotating the image will cause a redraw and you may lose your current image. If you choose no, the image will remain.</p>
+			<button class="button" onclick="redrawCanvas()">Ok</button>
+			<button class="button" onclick="hiderotatelb()">No!</button>
 		</div>
 	</body>
 </html>
