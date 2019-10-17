@@ -115,12 +115,49 @@
     			text-decoration:none;
     			font-size:12px;
     		}
-    		.menubar button, .menubar .button {
-
+    		.btn-cont {
+    			display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				grid-template-rows: 1fr;
+				grid-column-gap: 0px;
+				grid-row-gap: 0px;
+    			width: 250px;
     			float:right;
-    			margin-right:10px;
-    			margin-top:15px;
+    		}
+    		.menubar button, .menubar .button {
+    			float:right;
+    			margin-right:0px;
+    			margin-top:0px;
     			width:auto;
+    			height:60px;
+    			background-color:#fff;
+    			border-left:1px solid #bbb;
+    			position:relative;
+    			padding:0;
+    		}
+    		.menubar button:hover, .menubar .button:hover {
+    			background-color:#bada55;
+    		}
+    		.menubar button span, .menubar .button span {
+    			position:absolute;
+    			display:block;
+    			left:0;
+    			bottom:5px;
+    			width:100%;
+    			text-align:center;
+    			color:#333;
+    		}
+
+    		.menubar button svg, .menubar .button svg {
+    			position:absolute;
+    			display:block;
+    			left:0px;
+    			top:-3px;
+    			-moz-transform: scale(0.6);
+				-webkit-transform: scale(0.6);
+				-o-transform: scale(0.6);
+				-ms-transform: scale(0.6);
+				transform: scale(0.6);
     		}
     		.settingsmode .drawingboard {
     			pointer-events:none;
@@ -268,6 +305,14 @@
 			.radioBlock input {
 				position:absolute;
 				left:-1000000px;
+			}
+			.logo {
+				margin-top:15px;
+				margin-left:5px;
+			}
+
+			.logo path {
+				fill:#777;
 			}
     	</style>
 	</head>
@@ -530,10 +575,192 @@
 			</script>
 		</div>
 		<div class="menubar">
-			<button class="button" onclick="showClearLb()">Clear</button>
-			<a class="button" id="download" download="sketch.jpg" onclick="download_img(this);">Save</a>
-			<a class="button" id="upload" download="sketch.jpg" onclick="showimagelb();">Select image</a>
-			<button id="settings" onclick="openSettings()">Pen</button>
+			<svg class="logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="84px"
+				 height="30px" viewBox="0 0 84 30" style="enable-background:new 0 0 84 30;" xml:space="preserve">
+			<defs>
+			</defs>
+			<g>
+				<path d="M12.8,20c0,0.7-0.2,1.3-0.7,1.7c-0.5,0.4-1.1,0.6-1.9,0.6c-0.2,0-0.4,0-0.7-0.1C9.1,22.1,8.8,22,8.8,22
+					c-0.2-0.1-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.2-0.6-0.3c-0.3-0.3-0.5-0.6-0.8-1c-0.2-0.4-0.4-0.7-0.6-1.1c-0.2-0.4-0.3-0.6-0.3-0.7
+					c0-0.2,0.1-0.3,0.4-0.4c0.1,0,0.2,0,0.3,0c0.4,0,0.9,0,1.4,0.1c0.6,0.1,0.9,0.2,0.9,0.2c0.1,0.1,0.1,0.4,0.2,1.1
+					c0.1,0.6,0.2,0.9,0.4,0.9c0.3,0,0.4-0.4,0.4-1.2c0-1-0.3-1.6-0.8-1.9c-1.2-0.6-2-1.1-2.4-1.5C6.3,15.5,6,14.7,6,13.6
+					c0-0.7,0.2-1.4,0.6-2c0.4-0.6,0.8-1,1.3-1.1c0.2-0.1,1,0.2,2.2,0.7c0.1,0,0.4,0.1,1,0.2c0.4,0.1,0.7,0.2,0.8,0.4
+					c0.2,0.3,0.4,0.8,0.4,1.4c0,0.5,0,0.9,0,1.4c0.1,0.4,0.1,0.7,0.1,0.8c0,0.4-0.2,0.6-0.5,0.6c-0.2,0-0.5,0-1-0.2
+					c-0.6-0.2-0.9-0.4-1.1-0.6c0,0-0.1-0.5-0.1-1.4c0-0.8-0.1-1.3-0.3-1.3c-0.2,0-0.4,0.2-0.5,0.7c-0.2,0.5-0.2,1-0.2,1.5
+					c0,0.7,0.1,1.1,0.4,1.3c0.6,0.3,1.2,0.7,1.8,1c0.6,0.3,1,0.7,1.3,1.1C12.6,18.5,12.8,19.2,12.8,20z"/>
+				<path d="M23.4,20c0,0.2-0.2,0.7-0.7,1.3c-0.5,0.6-0.9,0.9-1.2,0.9c-0.5-0.1-1.7-1.5-3.4-4.4c-0.1,0.1-0.3,0.4-0.6,0.7v2.2
+					c0,0.1,0,0.2,0,0.3c0,0.2,0.1,0.3,0.1,0.4c0,0.4-0.1,0.7-0.3,0.8c-0.1,0.1-0.3,0.1-0.6,0.1c-0.5,0-0.9-0.1-1.4-0.3
+					c-0.5-0.2-0.8-0.4-0.8-0.7V7.3c0-0.2,0.1-0.4,0.2-0.7c0.1-0.2,0.3-0.4,0.4-0.5c0,0,0.1,0,0.2,0c0.3,0,0.8,0.1,1.4,0.3
+					c0.6,0.2,0.9,0.4,1,0.6c0,0.1,0.1,0.2,0.1,0.2c0,0.1-0.1,0.2-0.2,0.4c-0.1,0.2-0.2,0.3-0.2,0.4v6.6l2.8-3.8
+					c0.2-0.2,0.4-0.3,0.6-0.4c0.2,0,0.6,0.1,1,0.5c0.5,0.4,0.7,0.7,0.7,1c0,0.1-0.3,0.6-0.9,1.5c-0.9,1.3-1.5,2.1-1.6,2.4l2.5,3.4
+					c0.1,0.1,0.3,0.3,0.5,0.4C23.3,19.7,23.4,19.9,23.4,20z"/>
+				<path d="M32.1,18.5c0.1,0.2-0.1,0.8-0.7,1.7c-0.7,1-1.3,1.7-1.9,2c-0.1,0-0.2,0.1-0.3,0.1c-0.5,0-1.1-0.2-1.9-0.5
+					c-0.8-0.3-1.4-0.6-1.7-1c-0.7-0.9-1.1-2.3-1.1-3.9c0-1.6,0.3-3,1-4.2c0.7-1.3,1.6-2,2.7-2c0.4,0,0.9,0.1,1.4,0.3
+					c0.7,0.3,1.2,0.6,1.7,1.1c0.1,0.1,0.2,0.5,0.3,1c0.1,0.6,0.2,1.2,0.2,1.8c0,0.9-0.1,1.5-0.4,1.8c-1.3,0.4-2.6,0.7-4,0.7
+					c0,0.6,0,1.3,0.2,2c0.2,0.7,0.4,1,0.5,1c0.3,0,0.6-0.2,0.9-0.6c0.3-0.4,0.5-0.7,0.6-0.9c0.1-0.4,0.2-0.8,0.4-1.2
+					c0.2,0,0.6,0.1,1.2,0.3C31.7,18.2,32,18.4,32.1,18.5z M28.8,12.7c-0.2,0-0.5,0.3-0.9,1c-0.4,0.7-0.6,1.4-0.7,2c0.6,0,1-0.2,1.4-0.4
+					c0.2-0.2,0.3-0.8,0.3-1.9C28.9,13,28.8,12.8,28.8,12.7z"/>
+				<path d="M39.8,12.6c0,0.2-0.1,0.4-0.2,0.6s-0.3,0.3-0.5,0.3c-0.1,0-0.1,0-0.1,0c-0.2-0.1-0.6-0.1-1.2-0.1v7.5c0,0,0,0.1,0.1,0.3
+					c0.1,0.2,0.1,0.4,0.1,0.6c0,0.4-0.3,0.6-0.8,0.6c-0.3,0-0.8-0.1-1.5-0.3c-0.8-0.3-1.2-0.5-1.2-0.7c0-0.1,0-0.3,0.1-0.6
+					c0.1-0.3,0.2-0.5,0.2-0.7v-6.7h-0.6c-0.2,0-0.5-0.2-0.9-0.6c-0.4-0.4-0.5-0.8-0.5-1c0-0.2,0.1-0.4,0.2-0.5c0.1-0.2,0.3-0.2,0.5-0.2
+					h1.4V9.2c-0.2-0.3-0.3-0.5-0.3-0.8c0-0.3,0.1-0.4,0.3-0.5c0.1,0,0.3,0,0.5,0c0.5,0,1,0.1,1.6,0.2c0.6,0.1,1,0.3,1.2,0.4
+					c0.1,0.1,0.1,0.2,0.1,0.3c0,0.1-0.1,0.3-0.3,0.6c-0.2,0.3-0.3,0.4-0.3,0.5v1h0.6c0.1,0,0.4,0.2,0.8,0.7
+					C39.6,12.1,39.8,12.4,39.8,12.6z"/>
+				<path d="M48.9,18.2c0,0.2-0.2,0.6-0.6,1c-0.3,0.7-0.6,1.3-0.9,1.6c-0.6,0.8-1.3,1.2-2.1,1.3c-0.2,0-0.3,0-0.5,0
+					c-0.7,0-1.6-0.3-2.6-1c-0.9-0.6-1.3-2-1.3-4.2c0-1.6,0.2-3.1,0.7-4.4c0.5-1.4,1.2-2.2,2-2.2c0.6,0,1.4,0.1,2.3,0.5
+					c0.9,0.4,1.5,0.8,1.8,1.2c0.3,0.4,0.4,0.9,0.4,1.5c0,0.2,0,0.4,0,0.7c0,0.3,0,0.5,0,0.7c0,0.3,0,0.5,0,0.5c0,0.4-0.2,0.6-0.6,0.6
+					c-0.5,0-0.9-0.1-1.3-0.2c-0.5-0.2-0.9-0.4-1-0.8c0-0.1,0-0.3,0.2-0.5c0.1-0.2,0.2-0.3,0.2-0.5c0-0.1,0-0.3,0-0.7
+					c0-0.8-0.1-1.1-0.4-1.2c-0.4,0-0.7,0.6-1,1.8c-0.3,1.1-0.4,2.3-0.4,3.6c0,1.6,0.2,2.4,0.5,2.5c0.3,0.1,0.7-0.3,1.1-0.9
+					c0.4-0.6,0.6-1,0.6-1.2c0-0.2,0.1-0.4,0.1-0.6c0.1-0.4,0.3-0.5,0.7-0.5c0.2,0,0.6,0.2,1.2,0.4c0.6,0.3,0.9,0.5,0.9,0.6
+					C48.9,18,48.9,18.1,48.9,18.2z"/>
+				<path d="M59,21.4c-0.1,0.4-0.2,0.6-0.4,0.7c-0.1,0-0.2,0.1-0.5,0.1c-0.4,0-0.9-0.1-1.5-0.2s-1-0.3-1.1-0.4
+					c-0.1-0.1-0.1-0.1-0.1-0.2c0-0.1,0.1-0.3,0.2-0.6c0.1-0.1,0.2-0.2,0.2-0.3c0.1-0.1,0.1-0.3,0.1-0.5c0-5,0-7.5-0.1-7.5
+					c-0.2-0.1-0.6,0.4-1.3,1.4c-0.7,1-1.1,1.9-1.1,2.5v4.2c0.2,0.2,0.3,0.5,0.2,0.8c-0.1,0.4-0.3,0.7-0.6,0.8c-0.1,0-0.1,0-0.2,0
+					c-0.3,0-0.8-0.1-1.5-0.2c-0.7-0.2-1-0.3-1.1-0.4c-0.1-0.2-0.2-0.4,0-0.7c0,0,0.1-0.1,0.2-0.2c0.1-0.1,0.2-0.2,0.2-0.3V7.1
+					c0-0.1-0.1-0.2-0.2-0.4c-0.1-0.2-0.1-0.3-0.1-0.4c0.1-0.3,0.3-0.4,0.6-0.5c0.2,0,0.7,0,1.4,0.2c0.8,0.2,1.3,0.4,1.3,0.6
+					c0.1,0.1,0,0.3-0.1,0.6c-0.1,0.3-0.1,0.6-0.1,1v3.5c0.7-0.9,1.4-1.3,2-1.3c0.4,0,1,0.1,1.7,0.4c0.7,0.3,1.1,0.6,1.2,0.8
+					c0.4,0.8,0.5,3.8,0.5,9C59,20.9,59,21.2,59,21.4z"/>
+				<path d="M68.3,18.5c0.1,0.2-0.1,0.8-0.7,1.7c-0.7,1-1.3,1.7-1.9,2c-0.1,0-0.2,0.1-0.3,0.1c-0.5,0-1.1-0.2-1.9-0.5
+					c-0.8-0.3-1.4-0.6-1.7-1c-0.7-0.9-1.1-2.3-1.1-3.9c0-1.6,0.3-3,1-4.2c0.7-1.3,1.6-2,2.7-2c0.4,0,0.9,0.1,1.4,0.3
+					c0.7,0.3,1.2,0.6,1.7,1.1c0.1,0.1,0.2,0.5,0.3,1c0.1,0.6,0.2,1.2,0.2,1.8c0,0.9-0.1,1.5-0.4,1.8c-1.3,0.4-2.6,0.7-4,0.7
+					c0,0.6,0,1.3,0.2,2c0.2,0.7,0.4,1,0.5,1c0.3,0,0.6-0.2,0.9-0.6c0.3-0.4,0.5-0.7,0.6-0.9c0.1-0.4,0.2-0.8,0.4-1.2
+					c0.2,0,0.6,0.1,1.2,0.3C67.8,18.2,68.2,18.4,68.3,18.5z M64.9,12.7c-0.2,0-0.5,0.3-0.9,1c-0.4,0.7-0.6,1.4-0.7,2
+					c0.6,0,1-0.2,1.4-0.4c0.2-0.2,0.3-0.8,0.3-1.9C65,13,64.9,12.8,64.9,12.7z"/>
+				<path d="M77.4,18.5c0.1,0.2-0.1,0.8-0.7,1.7c-0.7,1-1.3,1.7-1.9,2c-0.1,0-0.2,0.1-0.3,0.1c-0.5,0-1.1-0.2-1.9-0.5
+					c-0.8-0.3-1.4-0.6-1.7-1c-0.7-0.9-1.1-2.3-1.1-3.9c0-1.6,0.3-3,1-4.2c0.7-1.3,1.6-2,2.7-2c0.4,0,0.9,0.1,1.4,0.3
+					c0.7,0.3,1.2,0.6,1.7,1.1c0.1,0.1,0.2,0.5,0.3,1c0.1,0.6,0.2,1.2,0.2,1.8c0,0.9-0.1,1.5-0.4,1.8c-1.3,0.4-2.6,0.7-4,0.7
+					c0,0.6,0,1.3,0.2,2c0.2,0.7,0.4,1,0.5,1c0.3,0,0.6-0.2,0.9-0.6c0.3-0.4,0.5-0.7,0.6-0.9c0.1-0.4,0.2-0.8,0.4-1.2
+					c0.2,0,0.6,0.1,1.2,0.3C76.9,18.2,77.3,18.4,77.4,18.5z M74,12.7c-0.2,0-0.5,0.3-0.9,1c-0.4,0.7-0.6,1.4-0.7,2c0.6,0,1-0.2,1.4-0.4
+					c0.2-0.2,0.3-0.8,0.3-1.9C74.1,13,74.1,12.8,74,12.7z"/>
+			</g>
+			<rect style="fill:none;" width="84" height="30"/>
+			</svg>
+
+
+			<div class="btn-cont">
+				<button class="pen" id="settings" onclick="openSettings()">
+					<span>Pen</span>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
+						 height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<g>
+							<path style="fill:#777;" d="M39.2,7.1l5.2,5.2L17.8,38.9l-5.2-5.2L39.2,7.1 M39.2,4.3L9.8,33.7l8,8l29.4-29.4L39.2,4.3
+								L39.2,4.3z"/>
+						</g>
+					</g>
+					<g>
+						<path style="fill:#777;" d="M8.1,40.2l3.2,3.2l-4.4,1.2L8.1,40.2 M7.1,36.4L4,47.5l11.1-3.1L7.1,36.4L7.1,36.4z"/>
+					</g>
+					<g>
+						<rect style="fill:none;" width="50" height="50"/>
+					</g>
+					</svg>
+
+				</button>
+				<a class="button image" id="upload" onclick="showimagelb();">
+					<span>Image</span>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
+						 height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<rect style="fill:none;" width="50" height="50"/>
+					</g>
+					<g>
+						<g>
+							<path style="fill:#777;" d="M33.7,10.5l8.3,8.3v20.7H8v-29H33.7 M34.6,8.5H6v33h38V17.9L34.6,8.5L34.6,8.5z"/>
+						</g>
+						<g>
+							<path style="fill:#777;" d="M36.6,13.3l2.6,2.6h-2.6V13.3 M34.6,8.5v9.4H44L34.6,8.5L34.6,8.5z"/>
+						</g>
+						<path style="fill:none;stroke:#777;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" d="M7,30.2
+							c7.1-6,13.7,0.7,18.5-1.2S43,28.3,43,28.3"/>
+						<path style="fill:none;stroke:#777;stroke-width:2;stroke-miterlimit:10;" d="M15.5,27.7c0-0.2,0-0.4,0-0.7c0-2.8,2.2-5,5-5
+							s5,2.2,5,5c0,0.9-0.2,1.7-0.6,2.4"/>
+						<g>
+							
+								<line style="fill:none;stroke:#777;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="20.5" y1="17" x2="20.5" y2="20"/>
+						</g>
+						<g>
+							
+								<line style="fill:none;stroke:#777;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="30.5" y1="27" x2="27.5" y2="27"/>
+						</g>
+						<g>
+							
+								<line style="fill:none;stroke:#777;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="13.5" y1="27" x2="10.5" y2="27"/>
+						</g>
+						<g>
+							
+								<line style="fill:none;stroke:#777;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="13.4" y1="19.9" x2="15.6" y2="22.1"/>
+						</g>
+						<g>
+							
+								<line style="fill:none;stroke:#777;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="27.6" y1="19.9" x2="25.4" y2="22.1"/>
+						</g>
+					</g>
+					</svg>
+
+
+
+				</a>
+				<button class="button new" onclick="showClearLb()">
+					<span>New</span>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
+						 height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<rect style="fill:none;" width="50" height="50"/>
+					</g>
+					<g>
+						<g>
+							<path style="fill:#777;" d="M33.7,10.5l8.3,8.3v20.7H8v-29H33.7 M34.6,8.5H6v33h38V17.9L34.6,8.5L34.6,8.5z"/>
+						</g>
+						<g>
+							<path style="fill:#777;" d="M36.6,13.3l2.6,2.6h-2.6V13.3 M34.6,8.5v9.4H44L34.6,8.5L34.6,8.5z"/>
+						</g>
+					</g>
+					</svg>
+
+				</button>
+				<a class="button save" id="download" download="sketch.jpg" onclick="download_img(this);">
+					<span>Save</span>
+					<!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In  -->
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
+						 height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<g>
+							<rect style="fill:none;" width="50" height="50"/>
+						</g>
+						<g>
+							<polyline style="fill:none;stroke:#777;stroke-width:2;stroke-miterlimit:10;" points="43,27 43,41 7,41 7,27 		"/>
+							<polygon style="fill:none;stroke:#777;stroke-width:2;stroke-miterlimit:10;" points="28,24 28,9 22,9 22,24 15,24 25,34 
+								35,24 		"/>
+						</g>
+					</g>
+					</svg>
+				</a>
+				<a class="button info" id="info" onclick="showimagelb();">
+					<span>Info</span>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px"
+						 height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<g>
+							<rect style="fill:none;" width="50" height="50"/>
+						</g>
+						<rect x="20" y="22" style="fill:none;stroke:#777;stroke-width:2;stroke-miterlimit:10;" width="10" height="21"/>
+						<circle style="fill:none;stroke:#777;stroke-width:2;stroke-miterlimit:10;" cx="25" cy="11" r="6"/>
+					</g>
+					</svg>
+
+				</a>
+			</div>
 		</div>
 		<div class="settings">
 			<div class="settingspad">
