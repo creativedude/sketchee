@@ -237,6 +237,33 @@
     		.lightbox p {
     			margin-bottom:20px;
     		}
+
+    		.cryptolightbox {
+    			display:none;
+    			color:#333;
+    			position:fixed;
+    			width:100vw;
+    			height:100vh;
+    			z-index:6;
+    			background-color:#fff;
+    			-webkit-flex-direction: column;
+			    -ms-flex-direction: column;
+			    flex-direction: column;
+			    -webkit-flex-wrap: nowrap;
+			    -ms-flex-wrap: nowrap;
+			    flex-wrap: nowrap;
+			    -webkit-justify-content: center;
+			    -ms-flex-pack: center;
+			    justify-content: center;
+			    -webkit-align-content: stretch;
+			    -ms-flex-line-pack: stretch;
+			    align-content: stretch;
+			    -webkit-align-items: center;
+			    -ms-flex-align: center;
+			    align-items: center;
+			    z-index:999;
+			    text-align:center;
+    		}
     		.show {
 			    display: -ms-flexbox;
 			    display: -webkit-flex;
@@ -322,6 +349,40 @@
 			.lightbox a {
 				color:#bada55;
 			}
+			.cryptocont {
+			}
+			.cryptoicons {
+				margin:0 auto;
+    			display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: 1fr;
+				grid-column-gap: 0px;
+				grid-row-gap: 0px;
+				grid-column-gap: 10px;
+    			width: 250px;
+    			float:right;
+    		}
+    		.cryptoicons a {
+    			background-color:#fff;
+    			color:#333;
+    			display:block;
+    			text-align:center;
+    			padding: 5px 0;
+    		}
+    		.cryptoicons svg {
+    			margin: 0px auto 5px auto;
+    		}
+    		.cryptoicons span {
+    			font-size:12px;
+    			display:block;
+    		}
+    		.cryptolightbox .address {
+    			margin: 20px auto 40px;
+    			font-size:14px;
+    		}
+    		.cryptolightbox svg {
+    			margin: 20px auto;
+    		} 
     	</style>
 	</head>
 	<body id="body">
@@ -465,6 +526,21 @@
 				function hideinfolb() {
 					document.getElementById('infolb').className= "lightbox";
 					active = true;
+				}
+				function showbtc() {
+					document.getElementById('btclb').className= "cryptolightbox show";
+				}
+				function showbch() {
+					document.getElementById('bchlb').className= "cryptolightbox show";
+				}
+				function showeth() {
+					document.getElementById('ethlb').className= "cryptolightbox show";
+				}
+				function closecryptoLB() {
+					console.log('closing');
+					document.getElementById('btclb').className= "cryptolightbox";
+					document.getElementById('bchlb').className= "cryptolightbox";
+					document.getElementById('ethlb').className= "cryptolightbox";
 				}
 				download_img = function(el) {
 				  var imageURI = document.getElementById('defaultCanvas0').toDataURL("image/jpg");
@@ -842,8 +918,170 @@
 		<div class="lightbox" id="infolb">
 			<p><strong>Sketchee</strong> is a little browser based sketch app. <br>I was slightly annoyed by mobile sketch apps that were overly complex, heavy and riddled with ads, when all I wanted to do was sketch on a photo.<br> Add to your home screen for a more app like experience. You dont even have to be online to use it.</p>
 			<p>If you like this, consider buying me a beer or tell your friends about it!</p>
+			<div class="cryptocont">
+				<div class="cryptoicons">
+					<a onclick="showbtc()" href="#" class="btc">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+							<defs>
+							</defs>
+							<g>
+								<g>
+									<rect style="fill:none;" width="50" height="50"/>
+								</g>
+								<g>
+									<circle style="fill-rule:evenodd;clip-rule:evenodd;fill:#F7931A;" cx="25" cy="25" r="23"/>
+									<path style="fill:#FFFFFF;" d="M35.4,22.1c0.5-3-1.8-4.6-5-5.7l1-4.1l-2.5-0.6l-1,4c-0.7-0.2-1.3-0.3-2-0.5l1-4l-2.5-0.6l-1,4.1
+										c-0.5-0.1-1.1-0.2-1.6-0.4l0,0l-3.4-0.9l-0.7,2.7c0,0,1.8,0.4,1.8,0.4c1,0.3,1.2,0.9,1.2,1.4l-1.2,4.7c0.1,0,0.2,0,0.3,0.1
+										l-0.3-0.1l-1.6,6.5c-0.1,0.3-0.4,0.8-1.1,0.6c0,0-1.8-0.5-1.8-0.5l-1.2,2.8l3.2,0.8c0.6,0.2,1.2,0.3,1.8,0.5l-1,4.1l2.5,0.6l1-4.1
+										c0.7,0.2,1.3,0.4,2,0.5l-1,4.1l2.5,0.6l1-4.1c4.2,0.8,7.4,0.5,8.8-3.4c1.1-3.1-0.1-4.9-2.3-6C33.8,25.4,35,24.4,35.4,22.1z
+										 M29.7,30.1c-0.8,3.1-6,1.4-7.7,1l1.4-5.5C25.1,26.1,30.5,26.9,29.7,30.1z M30.4,22.1c-0.7,2.8-5,1.4-6.4,1l1.2-5
+										C26.6,18.5,31.2,19.2,30.4,22.1z"/>
+								</g>
+							</g>
+						</svg>
+						<span>Bitcoin</span>
+					</a>
+					<a onclick="showbch()" href="#" class="bch">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+							<defs>
+							</defs>
+							<g>
+								<g>
+									<rect style="fill:none;" width="50" height="50"/>
+								</g>
+								<g id="Bitcoin_Cash_1_">
+									<g id="wordmark-bitcoincash-dark.min_1_">
+										<g id="Rectangle_1_" transform="translate(-229 -486)">
+											<path id="path0_fill_1_" style="fill:#FFFFFF;" d="M229,495.4h50v31.3h-50V495.4z"/>
+										</g>
+										<g id="Vector_3_" transform="translate(-229 -486)">
+											<path id="path1_fill_1_" style="fill:#F7931A;" d="M229,495.4h14.3c-2.5,1.8-4.5,4.1-5.9,6.8c-1.4,2.7-2.1,5.7-2.1,8.8
+												s0.7,6.1,2.1,8.8s3.4,5.1,5.9,6.8H229V495.4z M254,495.4c-4.1,0-8,1.6-10.9,4.6c-2.9,2.9-4.5,6.9-4.5,11c0,4.1,1.6,8.1,4.5,11
+												s6.8,4.6,10.9,4.6c4.1,0,8-1.6,10.9-4.6c2.9-2.9,4.5-6.9,4.5-11c0-4.1-1.6-8.1-4.5-11C262,497,258.1,495.4,254,495.4L254,495.4z
+												 M279,495.4h-14.3c2.5,1.8,4.5,4.1,5.9,6.8c1.4,2.7,2.1,5.7,2.1,8.8c0,3.1-0.7,6.1-2.1,8.8c-1.4,2.7-3.4,5.1-5.9,6.8H279V495.4z
+												"/>
+										</g>
+										<g id="Vector_2_" transform="translate(-218.105 -482.324)">
+											<path id="path2_fill_1_" style="fill:#FFFFFF;" d="M249.9,502.7c-0.7-2-2.6-2.2-4.8-1.9l-0.7-2.8l-1.7,0.4l0.7,2.7
+												c-0.4,0.1-0.9,0.2-1.3,0.4l-0.7-2.8l-1.7,0.4l0.7,2.8c-0.4,0.1-0.7,0.2-1.1,0.3v0l-2.3,0.6l0.5,1.8c0,0,1.2-0.3,1.2-0.3
+												c0.7-0.2,1,0.2,1.2,0.5l0.8,3.2c0.1,0,0.1,0,0.2,0l-0.2,0.1l1.1,4.5c0,0.2,0,0.6-0.5,0.7c0,0-1.2,0.3-1.2,0.3l0.2,2.1l2.2-0.6
+												c0.4-0.1,0.8-0.2,1.2-0.3l0.7,2.8l1.7-0.4l-0.7-2.8c0.5-0.1,0.9-0.2,1.4-0.3l0.7,2.8l1.7-0.4l-0.7-2.8c2.8-0.9,4.6-2.1,4.2-4.9
+												c-0.3-2.2-1.6-2.9-3.3-2.9C250,505.2,250.4,504.2,249.9,502.7L249.9,502.7z M249,509.4c0.5,2.1-3.1,2.8-4.3,3.1l-0.9-3.8
+												C245,508.5,248.5,507.2,249,509.4z M247,504.3c0.5,1.9-2.6,2.5-3.5,2.7l-0.8-3.4C243.5,503.3,246.4,502.3,247,504.3z"/>
+										</g>
+									</g>
+								</g>
+							</g>
+						</svg>
+						<span>Bitcoin Cash</span>
+					</a>
+					<a onclick="showeth()" href="#" class="eth">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+							<defs>
+							</defs>
+							<g>
+								<g>
+									<rect y="0" style="fill:none;" width="50" height="50"/>
+								</g>
+								<g>
+									<polygon style="fill:#343434;" points="25,0 24.7,1.1 24.7,34.2 25,34.5 40.3,25.5 		"/>
+									<polygon style="fill:#8C8C8C;" points="25,0 9.6,25.5 25,34.5 25,18.5 		"/>
+									<polygon style="fill:#3C3C3B;" points="25,37.4 24.8,37.7 24.8,49.4 25,50 40.4,28.4 		"/>
+									<polygon style="fill:#8C8C8C;" points="25,50 25,37.4 9.6,28.4 		"/>
+									<polygon style="fill:#141414;" points="25,34.5 40.3,25.5 25,18.5 		"/>
+									<polygon style="fill:#393939;" points="9.6,25.5 25,34.5 25,18.5 		"/>
+								</g>
+							</g>
+						</svg>
+						<span>Ethereum</span>
+					</a>
+				</div>
+			</div>
 			<p>Built by <a href="https://github.com/creativedude" target="_blank">CreativeDude</a></p>
 			<button class="button" onclick="hideinfolb()">Close</button>
+			<div class="cryptolightbox" id="btclb">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<g>
+							<rect style="fill:none;" width="50" height="50"/>
+						</g>
+						<g>
+							<circle style="fill-rule:evenodd;clip-rule:evenodd;fill:#F7931A;" cx="25" cy="25" r="23"/>
+							<path style="fill:#FFFFFF;" d="M35.4,22.1c0.5-3-1.8-4.6-5-5.7l1-4.1l-2.5-0.6l-1,4c-0.7-0.2-1.3-0.3-2-0.5l1-4l-2.5-0.6l-1,4.1
+								c-0.5-0.1-1.1-0.2-1.6-0.4l0,0l-3.4-0.9l-0.7,2.7c0,0,1.8,0.4,1.8,0.4c1,0.3,1.2,0.9,1.2,1.4l-1.2,4.7c0.1,0,0.2,0,0.3,0.1
+								l-0.3-0.1l-1.6,6.5c-0.1,0.3-0.4,0.8-1.1,0.6c0,0-1.8-0.5-1.8-0.5l-1.2,2.8l3.2,0.8c0.6,0.2,1.2,0.3,1.8,0.5l-1,4.1l2.5,0.6l1-4.1
+								c0.7,0.2,1.3,0.4,2,0.5l-1,4.1l2.5,0.6l1-4.1c4.2,0.8,7.4,0.5,8.8-3.4c1.1-3.1-0.1-4.9-2.3-6C33.8,25.4,35,24.4,35.4,22.1z
+								 M29.7,30.1c-0.8,3.1-6,1.4-7.7,1l1.4-5.5C25.1,26.1,30.5,26.9,29.7,30.1z M30.4,22.1c-0.7,2.8-5,1.4-6.4,1l1.2-5
+								C26.6,18.5,31.2,19.2,30.4,22.1z"/>
+						</g>
+					</g>
+				</svg>
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAACXBIWXMAABYlAAAWJQFJUiTwAAAGKGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTEwLTE3VDE4OjMxOjMzKzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0xMC0xOFQxMToxMzo0MCswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0xMC0xOFQxMToxMzo0MCswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjEiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJEb3QgR2FpbiAyMCUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YWY0ZGUxMGEtMGI1OC00YWM1LTkzY2YtZDI3NjJmNTY4YjBhIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOmU1ZmMzMGQ2LWJjOTEtNGM3OC05NDdhLTNlMDA4Nzc4ZTU4YyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmU1ZmMzMGQ2LWJjOTEtNGM3OC05NDdhLTNlMDA4Nzc4ZTU4YyIgZXhpZjpQaXhlbFhEaW1lbnNpb249IjUwOCIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjQxMiI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmU1ZmMzMGQ2LWJjOTEtNGM3OC05NDdhLTNlMDA4Nzc4ZTU4YyIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0xOFQxMDoxODoxMiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmFmNGRlMTBhLTBiNTgtNGFjNS05M2NmLWQyNzYyZjU2OGIwYSIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0xOFQxMToxMzo0MCswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+j8UaPAAABRlJREFUeJztncuu2zAMBeOi///L6cJdRCjHh5QdtChmFi1yLUvOgICiF328X1Lx428/wL+KYgDFAIoBFAMoBlAMoBhAMYBiAMUAigEUAygGUAygGEAxgGIAxQA/qz8eoyqWWeMDryzX3712mhPSRaOjr1A1Y8QAigEUAygGUAygGKDsrn+TOsuqS+R7js/rxYdmBVVrfM/OVzgxYgDFAIoBFAMoBrjqlU6afc+BV7i26h7uvN54T3qCWfd5YsQAigEUAygGUAygGCB31014QBi70aJTfhUfqlt7hXcwYgDFAIoBFAMoBnisV+L5yaq/KorFUejx5/XZkukIIwZQDKAYQDGAYgDFALm7vj02a+4V2lmjbD7bzlcwYgDFAIoBFAMoBrjqlXaGaGk2k4vFD6/JPWvpDYwYQDGAYgDFAIoBFAMcD2cc4n0/n39aSb0tDy+/mC7JiAEUAygGUAygGCAPInm5sDnsi7UlmlUv7GzXWTBiAMUAigEUAygGUAyQB5HxxGJzpJf65riLKP164MfhdhgjBlAMoBhAMYBigKvEOu+Pf8vlQLynmTGH74kTmM15zrSUyRgxgGIAxQCKARQDKAYou2segTX71NkQbjTW5HqanX/VaIERAygGUAygGEAxQDm1ORsD7l+Jy4VFBZHRsiRjxACKARQDKAZQDKAYoL2ddSdL+minzqzpeLYSn62JEQMoBlAMoBhAMcDwFR+j13lc1LO/p2a24rk82+hghhEDKAZQDKAYQDGAYoDhKz64h47TvJyDdamA0+ek3nZnFxG2acQQigEUAygGUAyQVyKbadiaq5dVC0U71T2JnaEvN2PEAIoBFAMoBlAMoBhgbzvrTvYb3vVaVL0MPF/FlXRaMj61G4c2UQygGEAxgGKA9tRm83RhM8vOK1zZ2mRbFONjnQkjBlAMoBhAMYBiAMUAV3O+D2VN5SXGnfTntxMBOed7D8UAigEUAygGGL7iI75towmn6WkeqkzbZKpNOaP1UyMGUAygGEAxgGIAxQDt90SONrI2lwtv599pVjCbWz4xYgDFAIoBFAMoBshTmxf3fhaLE5ipzv08b3GoWBVLGDGAYgDFAIoBFAMoBsiDyIUqzXpV4JNmNvYb+QyKD1UFnol8AsUAigEUAygGuDpkcRLnNPe3szKpC9uazTQ76xMoBlAMoBhAMYBigHYy9ebM7s4VbG2rWDM/bJoANmIAxQCKARQDKAYY5gyP3cBCOpixFGtWEK8/lKjciAEUAygGUAygGEAxwN4rPk5mu1GXwt84YcntpN8VrkQOUAygGEAxgGKAO1Ob8aD96Eqczby9E7ZZ24kRAygGUAygGEAxgGKA9iAyVnT+t9+rx/XG/eMpPIh0JXKMYgDFAIoBFAMM3xNZUWRAbU5tzoaKRTGuzZXIb6EYQDGAYgDFAIoBhu+JXJiN6kZLmc1NQDtroUsB/nVhxACKARQDKAZQDJBP6jdHes0NKc1+ZLbBpkjIenFrKnZixACKARQDKAZQDKAYYJhYh7mxXNhMucPtFLPO3E5zctqIARQDKAZQDKAY4LFeaaE5Z8lXbs+aLpU2z/0vGDGAYgDFAIoBFAMoBmi/4iNxY6dOWmK8PZ2880vAiAEUAygGUAygGGD4nkhmNrU5em9UdU/zcZYGsL9yf8wAxQCKARQDKAZ47Ojf/4YRAygGUAygGEAxgGIAxQCKARQDKAZQDKAYQDGAYgDFAIoBFAMoBlAM8AuJR0hZXQuJWQAAAABJRU5ErkJggg=="/>
+				<div class="address">bc1qng6htpdkg2utg0gazxnwpj04lhs8auwlzd3xf8</div>
+				<button class="button" onclick="closecryptoLB()">Thank you!</button>
+
+			</div>
+			<div class="cryptolightbox" id="bchlb">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<g>
+							<rect style="fill:none;" width="50" height="50"/>
+						</g>
+						<g id="Bitcoin_Cash_1_">
+							<g id="wordmark-bitcoincash-dark.min_1_">
+								<g id="Rectangle_1_" transform="translate(-229 -486)">
+									<path id="path0_fill_1_" style="fill:#FFFFFF;" d="M229,495.4h50v31.3h-50V495.4z"/>
+								</g>
+								<g id="Vector_3_" transform="translate(-229 -486)">
+									<path id="path1_fill_1_" style="fill:#F7931A;" d="M229,495.4h14.3c-2.5,1.8-4.5,4.1-5.9,6.8c-1.4,2.7-2.1,5.7-2.1,8.8
+										s0.7,6.1,2.1,8.8s3.4,5.1,5.9,6.8H229V495.4z M254,495.4c-4.1,0-8,1.6-10.9,4.6c-2.9,2.9-4.5,6.9-4.5,11c0,4.1,1.6,8.1,4.5,11
+										s6.8,4.6,10.9,4.6c4.1,0,8-1.6,10.9-4.6c2.9-2.9,4.5-6.9,4.5-11c0-4.1-1.6-8.1-4.5-11C262,497,258.1,495.4,254,495.4L254,495.4z
+										 M279,495.4h-14.3c2.5,1.8,4.5,4.1,5.9,6.8c1.4,2.7,2.1,5.7,2.1,8.8c0,3.1-0.7,6.1-2.1,8.8c-1.4,2.7-3.4,5.1-5.9,6.8H279V495.4z
+										"/>
+								</g>
+								<g id="Vector_2_" transform="translate(-218.105 -482.324)">
+									<path id="path2_fill_1_" style="fill:#FFFFFF;" d="M249.9,502.7c-0.7-2-2.6-2.2-4.8-1.9l-0.7-2.8l-1.7,0.4l0.7,2.7
+										c-0.4,0.1-0.9,0.2-1.3,0.4l-0.7-2.8l-1.7,0.4l0.7,2.8c-0.4,0.1-0.7,0.2-1.1,0.3v0l-2.3,0.6l0.5,1.8c0,0,1.2-0.3,1.2-0.3
+										c0.7-0.2,1,0.2,1.2,0.5l0.8,3.2c0.1,0,0.1,0,0.2,0l-0.2,0.1l1.1,4.5c0,0.2,0,0.6-0.5,0.7c0,0-1.2,0.3-1.2,0.3l0.2,2.1l2.2-0.6
+										c0.4-0.1,0.8-0.2,1.2-0.3l0.7,2.8l1.7-0.4l-0.7-2.8c0.5-0.1,0.9-0.2,1.4-0.3l0.7,2.8l1.7-0.4l-0.7-2.8c2.8-0.9,4.6-2.1,4.2-4.9
+										c-0.3-2.2-1.6-2.9-3.3-2.9C250,505.2,250.4,504.2,249.9,502.7L249.9,502.7z M249,509.4c0.5,2.1-3.1,2.8-4.3,3.1l-0.9-3.8
+										C245,508.5,248.5,507.2,249,509.4z M247,504.3c0.5,1.9-2.6,2.5-3.5,2.7l-0.8-3.4C243.5,503.3,246.4,502.3,247,504.3z"/>
+								</g>
+							</g>
+						</g>
+					</g>
+				</svg>
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAACXBIWXMAABYlAAAWJQFJUiTwAAAGKGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTEwLTE3VDE4OjM0OjI1KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0xMC0xOFQxMToxMzo0MSswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0xMC0xOFQxMToxMzo0MSswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjEiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJEb3QgR2FpbiAyMCUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NmZjYTlhMmYtOTQ3ZS00MzBmLTg0MzEtNTZjYjEyZGExYTc4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQxN2JlMzRjLTMyN2EtNDZlYy05YWRjLTJhNzI5NDQ2MzA4ZSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjQxN2JlMzRjLTMyN2EtNDZlYy05YWRjLTJhNzI5NDQ2MzA4ZSIgZXhpZjpQaXhlbFhEaW1lbnNpb249IjM1MiIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjM2NiI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjQxN2JlMzRjLTMyN2EtNDZlYy05YWRjLTJhNzI5NDQ2MzA4ZSIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0xOFQxMDoxNzozMyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjZmY2E5YTJmLTk0N2UtNDMwZi04NDMxLTU2Y2IxMmRhMWE3OCIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0xOFQxMToxMzo0MSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SqH2AQAABNtJREFUeJzt3duK21AQBVEr5P9/2XnIGCzR1dndci6EWi8hHlk2xQHJuhwdz4cq3/72F/hXGQYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGfK9ePObreR06Pk7/PeqFBs5ruKy2Xt/821frccQAwwDDAMMAwwDDAMOAcj/mJdnvmOyqHMEyl9WWO0SXnab6oxdf/p0jBhgGGAYYBhgGGAa0m+sv9Uat/c3/PP1zlMvUK0o26ZMDC5Mv/84RAwwDDAMMAwwDDAOSzfXC4Hd0dCLgz1+/7ogBhgGGAYYBhgGGAYYBn96PSY4hXF6d7POMF11zxADDAMMAwwDDAMOAZHM92Tq2ZwnacweP8tVyoX7z3y4bc8QAwwDDAMMAwwDDgHZzvbinoFxB/zv6Wf2xvgYvupfg/GFbjhhgGGAYYBhgGGAYUG6uf9fB5sFV7MkmfX19XcIRAwwDDAMMAwwDDAMMA5LDDu2RgOSdl1db7eQH7YmAdq+mXl9zfsERAwwDDAMMAwwDDAMGMw5F18yVb223lZe/9sueP7o9wHDzFIIjBhgGGAYYBhgGGAYkZwmii+XOb02O30dzCiY/yJM7/+tv4sQ6c4YBhgGGAYYBhgHtr+t683peaHKweXENXmvxlnhZRwwwDDAMMAwwDDAMMAy4fetfu0fQ7rFEq19I7vz3sMOaYYBhgGGAYYBhwGJinXJzWJ+hj66ZKw8etDPsT64G3HLEAMMAwwDDAMMAw4D99PvtHyc/yNtzEYNJeCbX5//6F7gjBhgGGAYYBhgGGAYYBhzdHsfiWXvzyXknDzyO1j4/UuGtfwOGAYYBhgGGAYYBg5P67U//Z7dsf0Bg/hzeaILAm6cQHDHAMMAwwDDAMMAw4FP3EtQ+NiP+5KbBctlkF+HEEQMMAwwDDAMMAwwD9tfglf97ae+W39+ql8zNX39oPwVwwREDDAMMAwwDDAMMAwwD2pP6r2W6P7a/+e/PBdSe1J/swEyXccQAwwDDAMMAwwDDgHJz3W97k5Pwg632ZaHkjoB+Ezw45OG9BHOGAYYBhgGGAYYBg/l8o9vuy81hdIl7u29weXUguQnRX9cDhgGGAYYBhgGGAe2v6y+3j0/fn/lm8Du/fqcPt/sUwwDDAMMAwwDDAMOA5E79yVH9yUc/gjUkjx5ITupH1zO+c8QAwwDDAMMAwwDDgOTWv8VUe4Ob8m4cqVh8P+8luMswwDDAMMAwwDAguWR+tL6f/0zuj5/PgBPNyFcu4zx4txkGGAYYBhgGGAYYBrSHHQai3aFkv6P+Yz1tQr0HVB7GGM995IgBhgGGAYYBhgGGAe2MQ8k2eLJpP29e9++Mlk14ceKcYYBhgGGAYYBhwP6pf8mdgMkTcCaf+bG3OJ/vmmGAYYBhgGGAYcBiPt9WuZ1ePC3nUS5Tf9hlmXJF42cJO2KAYYBhgGGAYYBhgGHAp/dj2mf4JOfZ2/U9yvUd3avth3mWYM4wwDDAMMAwwDBg8JDeSHLYIfmw+rq6+gstHkdYv/OdIwYYBhgGGAYYBhgGtJvr/aXzyZ360YSD5dov6q+5f5TO4/FwxCDDAMMAwwDDAMOAT9+p/99wxADDAMMAwwDDAMMAwwDDAMMAwwDDAMMAwwDDAMMAwwDDAMMAw4AfuxsBWQOnXfAAAAAASUVORK5CYII="/>
+
+				<div class="address">1AHE9SxHm66wPb5NQAJzKR2uVbiceM3hgc</div>
+				<button class="button" onclick="closecryptoLB()">Thank you!</button>
+			</div>
+			<div class="cryptolightbox" id="ethlb">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<g>
+							<rect y="0" style="fill:none;" width="50" height="50"/>
+						</g>
+						<g>
+							<polygon style="fill:#343434;" points="25,0 24.7,1.1 24.7,34.2 25,34.5 40.3,25.5 		"/>
+							<polygon style="fill:#8C8C8C;" points="25,0 9.6,25.5 25,34.5 25,18.5 		"/>
+							<polygon style="fill:#3C3C3B;" points="25,37.4 24.8,37.7 24.8,49.4 25,50 40.4,28.4 		"/>
+							<polygon style="fill:#8C8C8C;" points="25,50 25,37.4 9.6,28.4 		"/>
+							<polygon style="fill:#141414;" points="25,34.5 40.3,25.5 25,18.5 		"/>
+							<polygon style="fill:#393939;" points="9.6,25.5 25,34.5 25,18.5 		"/>
+						</g>
+					</g>
+				</svg>
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAACXBIWXMAABYlAAAWJQFJUiTwAAAGKGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTEwLTE3VDE4OjMzOjI5KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0xMC0xOFQxMToxMzo0MSswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0xMC0xOFQxMToxMzo0MSswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjEiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJEb3QgR2FpbiAyMCUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTk4NmZjYzUtZmQ0Yy00ZWMzLWFmMzAtMmYxOWE5YzNkZDcxIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjkyMGVkMGEwLTM2YWQtNDkwNC1hNjc4LTFiNzZjN2FiNTRkMyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjkyMGVkMGEwLTM2YWQtNDkwNC1hNjc4LTFiNzZjN2FiNTRkMyIgZXhpZjpQaXhlbFhEaW1lbnNpb249IjM2NiIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjM4NiI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjkyMGVkMGEwLTM2YWQtNDkwNC1hNjc4LTFiNzZjN2FiNTRkMyIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0xOFQxMDoxNjozMiswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjE5ODZmY2M1LWZkNGMtNGVjMy1hZjMwLTJmMTlhOWMzZGQ3MSIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0xOFQxMToxMzo0MSswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7f+TzQAABSFJREFUeJztnc2K4zAQBuNl3/+Vs4fkYEGXv27ZsMNQdRhIbEueQtC0fjrH+yUVf/73C/xUFAMoBlAMoBhAMYBiAMUAigEUAygGUAygGEAxgGIAxQCKARQDKAb4W315jJpIs8bH+bbYdHHbG99q6XrWDzbzxREDKAZQDKAYQDGAYoAyXH9pxuHiAzfDbVYNLKG3is2J0b+w4IgBFAMoBlAMoBjgKip94GiRvlobGAWVJW/kJ5uxqfkvLDhiAMUAigEUAygGUAyQw3UTnnGNU7bNoPzGZ2Zz1D0cMYBiAMUAigEUAzwWlb4UEebLaMGSw00V/TYWHyOOGEAxgGIAxQCKARQD5HDdPE26BNi4LJk2Ae08ExsY4YgBFAMoBlAMoBjgKiqNsrKY3D37IXW63rCBIwZQDKAYQDGAYgDFAMdTFYeqxUe+Uiwkzja6cj8P/UOOGEAxgGIAxQCKAXISGfegFPOLzQMTcU8N98O7Wot2YlwscMQAigEUAygGUAygGOCqhEHaj7OzRlkF/50r/CLNlNTTJ5soBlAMoBhAMUAZlZphYJabPbQBNYbCZhr7On2wsM4AxQCKARQDKAZQDFCuRMZVxebmHE7u4gRvj4de1HA9QDGAYgDFAIoB2kkkH6dPs4gxMnAm19xGsxPWUhrriAEUAygGUAygGEAxQLuYeip9N9tMmk6SMLPNsfvnKB0xgGIAxQCKARQDDAvrzIq6pX2qzQpvVWspBxzV33Fqc4BiAMUAigEUAygG2KuD15zMfZ1vSzPIsyXRqofEaPnTEQMoBlAMoBhAMcDVSuTCfiB6n7+LO1hHv9oxqxnudtYnUAygGEAxgGIAxQC5sM5s52nzp7aWm9ORxvgGaVfrTklYRwygGEAxgGIAxQD5pP7FDWeWVJFb46ZnIYpT0uZJzvMHk8gBigEUAygGUAygGKC9EtksVpeWGHlZkjutmh4lhNbBexDFAIoBFAMoBsgrkXx24XY+V92W9sPGBlLXTRwxgGIAxQCKARQDKAZ4IIlslhZI5Qji4uOBVxZSAZ9mIHfEAIoBFAMoBlAMcOcnPpoHJHmNMnZadN18neXuIzzjSuQAxQCKARQDKAZQDDD8iY+dUuZVA/v7i7jTpZ0bNdc/OGIAxQCKARQDKAbY+4mP0Qn6WfWb1GZ8naJpfsb9MWMUAygGUAygGEAxwNVPfMwOJha3LTRba5ZK4Fxz41Smc74DFAMoBlAMoBigvRKJ1y8qoBbrgNXUJtffSfXgdkrCuj/mHooBFAMoBlAMoBhgmEQ2C+vwiZUXNl1dSe+2Ux2hucjpiAEUAygGUAygGKAdldJts6DTrJiTdsrOwLdyanOAYgDFAIoBFAMoBsjVWbsN4ZVZhC4evZ0dxhoIBY4YQDGAYgDFAIoB2r9ezLxPf2+0U8WreFgDGRWYNYkcoBhAMYBiAMUAigGuNg41Q+LyYbRCGBtN25CqZ1JvzfdwxACKARQDKAZQDJDLve3MC1Y3F+FmtnOmd32WuXrIYoxiAMUAigEUAygGaFdn3WFU46Z5hVPSGPyLBixhMEYxgGIAxQCKAR6LSlwz/MbU5qif6qtefmoSOUAxgGIAxQCKARQD5HB9I8ymHawXj+JtzfOaN6rqfXDEAIoBFAMoBlAMkAvrNGmeb+QTF1U7xXvcrvPTDIiOGEAxgGIAxQCKAR47+vfbcMQAigEUAygGUAygGEAxgGIAxQCKARQDKAZQDKAYQDGAYgDFAIoBFAP8AyACSmClVjd3AAAAAElFTkSuQmCC"/>
+				<div class="address">0x5426ec6E1296ba7762DbEc27e5b1529Ce97E3181</div>
+				<button class="button" onclick="closecryptoLB()">Thank you!</button>
+			</div>
 		</div>
 		<div class="lightbox" id="rotatelb">
 			<p><strong>Warning</strong></br>Rotating the image will cause a redraw and you may lose your current image. If you choose no, the image will remain.</p>
